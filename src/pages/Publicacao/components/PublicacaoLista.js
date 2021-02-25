@@ -13,11 +13,6 @@ const colunasDeDados = [
         key: 'autor',
     },
     {
-        title: 'Edição',
-        dataIndex: 'edicao',
-        key: 'edicao',
-    },
-    {
         title: 'ISBN',
         dataIndex: 'ISBN',
         key: 'ISBN',

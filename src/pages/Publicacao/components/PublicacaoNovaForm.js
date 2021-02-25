@@ -10,12 +10,15 @@ const tailLayout = {
       span: 12,
     },
   }
-const PublicacaoForm = () => {
+const PublicacaoNovaForm = ({salvarPublicacao, quandoFinalizar}) => {
     return (
         <>
             <h3>Nova Publicação</h3>
-            <Form {...layout}>
-                <Form.Item label="ISBN" name="isbn">
+            <Form {...layout} onFinish={(dados)=>{
+                salvarPublicacao(dados)
+                quandoFinalizar()
+            }}>
+                <Form.Item label="ISBN" name="ISBN">
                     <Input />
                 </Form.Item>
                 <Form.Item label="Título" name="titulo">
@@ -24,7 +27,7 @@ const PublicacaoForm = () => {
                 <Form.Item label="Autor" name="autor">
                     <Input />
                 </Form.Item>
-                <Form.Item label="Edição" name="edição">
+                <Form.Item label="Edição" name="edicao">
                     <Input />
                 </Form.Item>
                 <Form.Item {...tailLayout}>
@@ -37,4 +40,4 @@ const PublicacaoForm = () => {
     )
 }
 
-export default PublicacaoForm
+export default PublicacaoNovaForm
