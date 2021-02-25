@@ -11,13 +11,19 @@ const PublicacaoPage = () => {
 
     return (
         <section style={{padding: '10px'}}>
-            <h2>Gerenciamento de Publicações</h2>
-            <Button type="primary" onClick={()=>setFormularioVisivel(true)}>Adicionar Publicação</Button>
+            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px'}}>
+                <h2>Publicações (Livros, Artigos, etc.)</h2>
+                <Button type="primary"
+                        onClick={()=>setFormularioVisivel(!formularioVisivel)}>
+                    {formularioVisivel ? '< Retornar' : ' + Nova Publicação'}
+                </Button>
+            </div>
             {!formularioVisivel ? 
             (<PublicacaoLista publicacoes={publicacoes} 
                               estaCarregando={estaCarregando} 
                               excluir={operacoes.excluir}/> ): 
-            (<PublicacaoNovaForm salvarPublicacao={operacoes.inserir} quandoFinalizar={()=>setFormularioVisivel(false)}/>)}
+            (<PublicacaoNovaForm salvarPublicacao={operacoes.inserir} 
+                                 quandoFinalizar={()=>setFormularioVisivel(false)}/>)}
         </section>
     )
 }

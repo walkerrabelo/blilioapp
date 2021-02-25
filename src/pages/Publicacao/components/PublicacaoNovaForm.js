@@ -12,8 +12,8 @@ const tailLayout = {
   }
 const PublicacaoNovaForm = ({salvarPublicacao, quandoFinalizar}) => {
     return (
-        <>
-            <h3>Nova Publicação</h3>
+        <section style={{padding: '20px'}}>
+            <h3 style={{marginBottom: '20px'}}>Insira os dados para a Nova Publicação</h3>
             <Form {...layout} onFinish={(dados)=>{
                 salvarPublicacao(dados)
                 quandoFinalizar()
@@ -36,7 +36,7 @@ const PublicacaoNovaForm = ({salvarPublicacao, quandoFinalizar}) => {
                     </Button>
                 </Form.Item>
             </Form>
-        </>
+        </section>
     )
 }
 
