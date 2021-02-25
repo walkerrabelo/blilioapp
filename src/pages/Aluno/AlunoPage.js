@@ -4,11 +4,12 @@ import { listaDeAlunos } from '../../services/aluno.service'
 import { AlunoLista } from './components/AlunoLista'
 
 const AlunoPage = () => {
-    const [alunos, estaCarregando] = useList(listaDeAlunos)   
+    //const [alunos, estaCarregando] = useList(listaDeAlunos)   
     return (
         <>
             <h1>Gerenciador de Alunos</h1>
-            { <AlunoLista alunos={alunos} estaCarregando={estaCarregando}/> }
+            
+            {/* <AlunoLista alunos={alunos} estaCarregando={estaCarregando}/> */}
         </>
     )
 }

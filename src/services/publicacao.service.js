@@ -1,9 +1,9 @@
 import { criadorDeServices } from './utils/service-utils'
 
 export const {
-    lista: listaDePublicacoes,
+    listar: listarPublicacoes,
     umRegistro: pegaPublicacao,
     inserir: inserirPublicacao,
     atualizar: atualizarPublicacao,
-    remover: removerPublicacao
+    excluir: removerPublicacao
 } = criadorDeServices('publicacoes')

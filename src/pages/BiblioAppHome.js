@@ -9,7 +9,7 @@ function BiblioAppHome() {
   return (
     <>
       <Header tituloLongo='BiblioApp' tituloCurto='BMC'/>
-      <section style={{padding: '10px'}}>
+      <section style={{padding: '20px'}}>
         <Tabs defaultActiveKey="1">
           <TabPane tab='Publicações' key='1'>
             <PublicacaoPage/>

@@ -1,7 +1,7 @@
 import { criadorDeServices } from './utils/service-utils'
 
-export const { lista : listaDeAlunos,
+export const { listar : listarAlunos,
                umRegistro: pegaAluno,
                inserir: inserirAluno,
                atualizar: atualizarAluno,
-               remover: excluirAluno } = criadorDeServices(`alunos`)
+               excluir: excluirAluno } = criadorDeServices(`alunos`)

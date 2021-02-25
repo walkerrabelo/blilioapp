@@ -1,9 +1,7 @@
-import useList from '../../../hooks/useList'
-import { listaDePublicacoes } from '../../../services/publicacao.service'
-import { Table } from 'antd';
+import { Table, Popconfirm } from 'antd';
 
 
-const colunas = [
+const colunasDeDados = [
     {
         title: 'Título',
         dataIndex: 'titulo',
@@ -24,17 +22,27 @@ const colunas = [
         dataIndex: 'ISBN',
         key: 'ISBN',
     },
+
 ]
 
-const PublicacaoLista = () => {
-
-    const [publicacoes, estaCarregando] = useList(listaDePublicacoes)
-
+const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
+    const colunas = [
+        ...colunasDeDados,
+        {
+            title: 'Ações',
+            dataIndex: '',
+            key: 'x',
+            render: (_, dado) => 
+                <Popconfirm title="Tem Certeza que deseja Excluir?" onConfirm={() => excluir(dado.key)}>
+                    <a>Excluir</a>
+                </Popconfirm>
+            
+        }
+    ]
     return (
-        <Table columns={colunas} 
-               dataSource={publicacoes} 
-               loading={estaCarregando}/>
+            <Table columns={colunas} 
+                dataSource={publicacoes} 
+                loading={estaCarregando}/>
     )
 }
-    
 export default PublicacaoLista
