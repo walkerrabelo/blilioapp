@@ -1,14 +1,15 @@
 
-import useList from '../../hooks/useList'
-import { listaDeAlunos } from '../../services/aluno.service'
+import useCrud from '../../hooks/useCrud'
+import AlunoForm from './components/AlunoForm'
 import { AlunoLista } from './components/AlunoLista'
 
 const AlunoPage = () => {
-    const [alunos, estaCarregando] = useList(listaDeAlunos)   
+    const [alunos, estaCarregando, operacoes] = useCrud('alunos')   
     return (
         <>
             <h1>Gerenciador de Alunos</h1>
-            { <AlunoLista alunos={alunos} estaCarregando={estaCarregando}/> }
+            <AlunoLista alunos={alunos} estaCarregando={estaCarregando}/>
+            <AlunoForm inserirAluno={operacoes.inserir}/>
         </>
     )
 }

@@ -1,18 +1,14 @@
-import { Form, Input, InputNumber, Button } from 'antd'
+import { Form, Input, Button } from 'antd'
 
 const layout = {
     labelCol: { span: 8 },
     wrapperCol: { span: 12 },
 }
 
-const AlunoForm = ({aluno}) => {
-
-    const onFinish = (data) => {
-        console.log(data)
-    }
+const AlunoForm = ({inserirAluno}) => {
 
     return (
-        <Form {...layout} name="nest-messages" onFinish={onFinish} >
+        <Form {...layout} name="nest-messages" onFinish={inserirAluno} >
             <Form.Item name='nome' label="Nome">
                 <Input />
             </Form.Item>

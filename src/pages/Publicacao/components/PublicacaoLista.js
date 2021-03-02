@@ -1,7 +1,4 @@
-import useList from '../../../hooks/useList'
-import { listaDePublicacoes } from '../../../services/publicacao.service'
 import { Table } from 'antd';
-
 
 const colunas = [
     {
@@ -26,10 +23,7 @@ const colunas = [
     },
 ]
 
-const PublicacaoLista = () => {
-
-    const [publicacoes, estaCarregando] = useList(listaDePublicacoes)
-
+const PublicacaoLista = ({publicacoes, estaCarregando}) => {
     return (
         <Table columns={colunas} 
                dataSource={publicacoes} 
