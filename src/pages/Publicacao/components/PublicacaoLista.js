@@ -1,4 +1,4 @@
-import { Table, Popconfirm } from 'antd';
+import { Table, Popconfirm, Button } from 'antd';
 
 
 const colunasDeDados = [
@@ -20,7 +20,7 @@ const colunasDeDados = [
 
 ]
 
-const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
+const PublicacaoLista = ({lista, estaCarregando, excluir}) => {
     const colunas = [
         ...colunasDeDados,
         {
@@ -29,15 +29,15 @@ const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
             key: 'x',
             render: (_, dado) => 
                 <Popconfirm title="Tem Certeza que deseja Excluir?" onConfirm={() => excluir(dado.key)}>
-                    <a>Excluir</a>
+                    <Button type='link'>Excluir</Button>
                 </Popconfirm>
             
         }
     ]
     return (
             <Table columns={colunas} 
-                dataSource={publicacoes} 
-                loading={estaCarregando}/>
+                   dataSource={lista} 
+                   loading={estaCarregando}/>
     )
 }
 export default PublicacaoLista

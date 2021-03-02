@@ -10,12 +10,12 @@ const tailLayout = {
       span: 12,
     },
   }
-const PublicacaoNovaForm = ({salvarPublicacao, quandoFinalizar}) => {
+const PublicacaoNovaForm = ({salvar, quandoFinalizar}) => {
     return (
         <section style={{padding: '20px'}}>
             <h3 style={{marginBottom: '20px'}}>Insira os dados para a Nova Publicação</h3>
             <Form {...layout} onFinish={(dados)=>{
-                salvarPublicacao(dados)
+                salvar(dados)
                 quandoFinalizar()
             }}>
                 <Form.Item label="ISBN" name="ISBN">
