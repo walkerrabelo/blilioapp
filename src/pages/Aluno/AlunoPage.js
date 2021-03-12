@@ -7,7 +7,7 @@ const AlunoPage = () => {
     const [alunos, estaCarregando, operacoes] = useCrud('alunos')   
     return (
         <>
-            <h1>Gerenciador de Alunos</h1>
+            <h1>Gerenciador Novo de Alunos</h1>
             <AlunoLista alunos={alunos} estaCarregando={estaCarregando}/>
             <AlunoForm inserirAluno={operacoes.inserir}/>
         </>
