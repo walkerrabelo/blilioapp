@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react'
 import { criadorDeServices } from '../services/utils/service-utils'
 
@@ -14,7 +15,7 @@ const useCrud = (nomeDaColecao) => {
                              return {id: dado.id, key: dado.id, ...dado.data() } 
                         }))
                 })
-    }, [])
+    }, []) 
 
     const operacoes = {
         inserir: (dados) => servico.inserir(dados)

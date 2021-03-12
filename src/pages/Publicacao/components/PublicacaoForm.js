@@ -10,11 +10,18 @@ const tailLayout = {
       span: 12,
     },
   }
-const PublicacaoForm = ({inserirPublicacao}) => {
+const PublicacaoForm = ({inserirPublicacao, aposInserir}) => {
+
+
+    const quandoFinalizar = (dados) => {
+        inserirPublicacao(dados)
+        aposInserir()
+    }
+
     return (
         <>
             <h3>Nova Publicação</h3>
-            <Form {...layout} onFinish={inserirPublicacao}>
+            <Form {...layout} onFinish={quandoFinalizar}>
                 <Form.Item label="ISBN" name="ISBN">
                     <Input />
                 </Form.Item>
