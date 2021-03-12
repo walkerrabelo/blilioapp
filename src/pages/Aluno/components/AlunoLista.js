@@ -4,4 +4,5 @@ const colunas = [
     { title: 'Telefone', dataIndex: 'telefone', key: 'telefone' },
     { title: 'Email', dataIndex: 'email', key: 'email' }
 ]
-export const AlunoLista = ({alunos, estaCarregando}) => <Table columns={colunas} dataSource={alunos} loading={estaCarregando}/>
+export const AlunoLista = ({alunos, estaCarregando}) => 
+    <Table columns={colunas} dataSource={alunos} loading={estaCarregando}/>
