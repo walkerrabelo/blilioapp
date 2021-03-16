@@ -12,14 +12,14 @@ const PublicacaoPage = () => {
         <>
             <h1>Gerenciamento de Publicações</h1>
             <Button type={formularioVisivel ? "default" : "primary"} onClick={() => setFormularioVisivel(!formularioVisivel)}>
-                {formularioVisivel ? '<< Voltar' : 'Novo Aluno'}
+                {formularioVisivel ? '<< Voltar' : 'Nova Publicação'}
             </Button>
 
             {formularioVisivel ? 
                 (
                     <PublicacaoForm inserirPublicacao={operacoes.inserir} aposInserir={() => setFormularioVisivel(false)}/>
                 ) : (
-                    <PublicacaoLista publicacoes={publicacoes} estaCarregando={estaCarregando}/>
+                    <PublicacaoLista publicacoes={publicacoes} estaCarregando={estaCarregando} excluir={operacoes.excluir}/>
                 )
             }
             

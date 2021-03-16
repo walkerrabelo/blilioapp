@@ -21,7 +21,9 @@ const useCrud = (nomeDaColecao) => {
         inserir: (dados) => servico.inserir(dados)
             .then(dado => setLista([...lista, {id: dado.id, key: dado.id, ...dados }])),
 
-        excluir: null,
+        excluir: (id) => servico.excluir(id).then(() => {
+            setLista(lista.filter(dado => dado.id !== id))
+        }),
         atualizar: null,
         umRegistro: null,
     }

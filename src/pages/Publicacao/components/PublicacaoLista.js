@@ -1,6 +1,6 @@
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 
-const colunas = [
+const colunasIniciais = [
     {
         title: 'Título',
         dataIndex: 'titulo',
@@ -20,10 +20,22 @@ const colunas = [
         title: 'ISBN',
         dataIndex: 'ISBN',
         key: 'ISBN',
-    },
+    }
 ]
 
-const PublicacaoLista = ({publicacoes, estaCarregando}) => {
+const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
+
+    const colunas = [
+        ...colunasIniciais,
+        {
+            title: 'Ações',
+            dataIndex: 'acoes',
+            key: 'acoes',
+            render: (_, publicacao) => 
+                <Button type='link' onClick={() => excluir(publicacao.key)}>Excluir</Button>
+        }
+    ]
+
     return (
         <Table columns={colunas} 
                dataSource={publicacoes} 

@@ -4,4 +4,4 @@ export const { lista : listaDeEmprestimos,
                umRegistro: pegaEmprestimo,
                inserir: inserirEmprestimo,
                atualizar: atualizarEmprestimo,
-               deletar: excluirEmprestimo } = criadorDeServices(`emprestimos`)
+               excluir: excluirEmprestimo } = criadorDeServices(`emprestimos`)
