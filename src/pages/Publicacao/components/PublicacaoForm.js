@@ -1,4 +1,5 @@
 import { Form, Input, Button } from 'antd'
+import { useEffect } from 'react'
 
 const layout = {
     labelCol: { span: 6 },
@@ -10,18 +11,24 @@ const tailLayout = {
       span: 12,
     },
   }
-const PublicacaoForm = ({inserirPublicacao, aposInserir}) => {
+const PublicacaoForm = ({publicacao, salvarPublicacao, aposInserir}) => {
 
+    const [formulario] = Form.useForm()
+
+    useEffect(() => { formulario.setFieldsValue(publicacao) }, [publicacao]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const quandoFinalizar = (dados) => {
-        inserirPublicacao(dados)
+        salvarPublicacao(dados)
         aposInserir()
     }
 
     return (
         <>
-            <h3>Nova Publicação</h3>
-            <Form {...layout} onFinish={quandoFinalizar}>
+            <h3>{ publicacao ? `Editando ${publicacao.titulo}` : 'Nova Publicação' }</h3>
+            <Form form={formulario} {...layout} onFinish={quandoFinalizar}>
+                <Form.Item name="id">
+                    <Input type="hidden" />
+                </Form.Item>
                 <Form.Item label="ISBN" name="ISBN">
                     <Input />
                 </Form.Item>

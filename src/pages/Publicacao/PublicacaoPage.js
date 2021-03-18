@@ -1,12 +1,33 @@
 import PublicacaoForm from "./components/PublicacaoForm"
 import PublicacaoLista from "./components/PublicacaoLista"
 import useCrud from '../../hooks/useCrud'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "antd"
 
 const PublicacaoPage = () => {
     const [publicacoes, estaCarregando, operacoes] = useCrud('publicacoes')
     const [formularioVisivel, setFormularioVisivel] = useState(false)
+    const [publicacaoEmEdicao, setPublicacaoEmEdicao] = useState(undefined)
+
+    const editar = (id) => {
+        const publicacaoCarregada = publicacoes.find(p => p.id === id)
+        setPublicacaoEmEdicao(publicacaoCarregada)
+        setFormularioVisivel(true)
+    }
+
+    const salvar = (publicacao) => {
+        if(publicacao.id) {
+            operacoes.atualizar(publicacao)
+            return
+        }
+        delete publicacao.id
+        operacoes.inserir(publicacao)
+    }
+
+    useEffect(() => {
+        if(!formularioVisivel)
+            setPublicacaoEmEdicao(undefined)
+    }, [formularioVisivel])
 
     return (
         <>
@@ -17,9 +38,9 @@ const PublicacaoPage = () => {
 
             {formularioVisivel ? 
                 (
-                    <PublicacaoForm inserirPublicacao={operacoes.inserir} aposInserir={() => setFormularioVisivel(false)}/>
+                    <PublicacaoForm publicacao={publicacaoEmEdicao} salvarPublicacao={salvar} aposInserir={() => setFormularioVisivel(false)}/>
                 ) : (
-                    <PublicacaoLista publicacoes={publicacoes} estaCarregando={estaCarregando} excluir={operacoes.excluir}/>
+                    <PublicacaoLista editar={editar} publicacoes={publicacoes} estaCarregando={estaCarregando} excluir={operacoes.excluir}/>
                 )
             }
             

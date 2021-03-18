@@ -1,4 +1,4 @@
-import { Button, Table } from 'antd';
+import { Button, Popconfirm, Table } from 'antd';
 
 const colunasIniciais = [
     {
@@ -23,7 +23,7 @@ const colunasIniciais = [
     }
 ]
 
-const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
+const PublicacaoLista = ({publicacoes, estaCarregando, editar, excluir}) => {
 
     const colunas = [
         ...colunasIniciais,
@@ -32,7 +32,12 @@ const PublicacaoLista = ({publicacoes, estaCarregando, excluir}) => {
             dataIndex: 'acoes',
             key: 'acoes',
             render: (_, publicacao) => 
-                <Button type='link' onClick={() => excluir(publicacao.key)}>Excluir</Button>
+                <div>
+                    <Popconfirm title="Você realmente deseja excluir ?" onConfirm={() => excluir(publicacao.key)}>
+                        <Button type='link'>Excluir</Button>
+                    </Popconfirm>
+                    <Button type='link' onClick={() => editar(publicacao.key)}>Editar</Button>
+                </div>
         }
     ]
 

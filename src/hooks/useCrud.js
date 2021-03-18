@@ -24,7 +24,11 @@ const useCrud = (nomeDaColecao) => {
         excluir: (id) => servico.excluir(id).then(() => {
             setLista(lista.filter(dado => dado.id !== id))
         }),
-        atualizar: null,
+        atualizar: (dados) => {
+            servico.atualizar(dados).then(() => {
+                setLista([...lista.filter(dado => dado.id !== dados.id), {id: dados.id, key: dados.id, ...dados }])
+            })
+        },
         umRegistro: null,
     }
 

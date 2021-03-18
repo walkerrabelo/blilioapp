@@ -6,7 +6,12 @@ export const criadorDeServices = (collectionName) => {
         lista      : (    ) => colecao.get(),
         umRegistro : (id  ) => colecao.doc(id).get(),
         inserir    : (dados) => colecao.add(dados),
-        atualizar  : (dados) => null,
+        atualizar  : (dados) => {
+            const id = dados.id
+            const dadosCopia = {...dados}
+            delete dadosCopia.id
+            return colecao.doc(id).update(dadosCopia)
+        },
         excluir    : (id) =>  colecao.doc(id).delete(),
     }
 }
